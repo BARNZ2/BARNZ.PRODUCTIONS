@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Share+Tech+Mono&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #121212 100%);
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    backdrop-filter: blur(4px);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20vh 5vw 0 5vw;
+}
+
+h1.title {
+    font-size: 1.5rem;
+}
+
+.tabs {
+    margin-top: 20px;
+}
+
+.tab {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 500px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border: 1px solid #333;
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.2);
+}
+
+.tab:hover {
+    background-color: #222;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
+
+.dropdown {
+    display: none;
+    margin-top: 10px;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    background-color: #121212;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 8px;
+    overflow-x: auto;
+    border: 1px solid #00ffff44;
+    box-shadow: inset 0 0 5px rgba(0,255,255,0.2);
+}
+
+.dropdown-content input {
+    flex: 1 1 auto;
+    padding: 6px 12px;
+    background-color: #000;
+    border: 1px solid #00ffff55;
+    color: #00ffff;
+    font-size: 12px;
+    border-radius: 5px;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    box-shadow: inset 0 0 5px rgba(0,255,255,0.3);
+}
+
+.dropdown-content input:hover {
+    background-color: #010101;
+    border-color: #00ffffaa;
+}
+
+.copy-btn {
+    background-color: #0d0d0d;
+    border: 1px solid #00ffff55;
+    color: #00ffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0,255,255,0.4);
+    transition: 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #111;
+    border-color: #00ffffaa;
+    box-shadow: 0 0 10px rgba(0,255,255,0.7);
+}
+
+.terminal {
+    font-size: 12px;
+    color: white;
+    margin-top: 30px;
+    padding: 0 1rem;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    border-right: .15em solid white;
+    width: fit-content;
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    animation: blink-caret 0.7s step-end infinite;
+    text-align: left;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .tab {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+.gallery-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    background-color: #0d0d0d;
+    border: 2px solid #00ffff55;
+    color: #00ffff;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,255,255,0.5);
+    transition: 0.3s ease;
+}
+
+.gallery-btn:hover {
+    background-color: #111;
+    border-color: #00ffffaa;
+    box-shadow: 0 0 15px rgba(0,255,255,0.8);
+}
+
+.gallery-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10,10,10,0.9);
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.gallery-modal.active {
+    display: flex;
+}
+
+.gallery-content {
+    max-width: 800px;
+    width: 100%;
+    background: #121212;
+    border: 1px solid #00ffff55;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+.gallery-content {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    background: #121212;
+    border: 1px solid #00ffff55;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+
+.close-btn {
+    font-size: 20px;
+    color: #00ffff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.image-grid img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #00ffff44;
+    transition: 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0,255,255,0.4);
+}
+.gallery-content h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3); /* subtle glow */
+}
+.gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 9999;
+    display: none;
+    overflow-y: auto; /* enables scrolling */
+}
+
+.gallery-content {
+    max-width: 90vw;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    position: relative;
+}
+
+/* Keeps the X button always in view */
+.close-btn {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #00ffff;
+    background-color: #000000;
+    border: 2px solid #00ffff55;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 10000;
+    text-shadow: 0 0 6px #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.2) inset;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: #0a0a0a;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.4) inset;
+}
